@@ -45,7 +45,6 @@ mainRoutes.post('/login', login);
 
 // Registration route
 const registration: RequestHandler = async (req, res, next) => {
-    console.log(req.body);
     if(
         typeof req?.body?.username !== "string" ||
         typeof req?.body?.password !== "string"
