@@ -1,0 +1,8 @@
+.git
+.gitignore
+.dockerignore
+README.md
+Dockerfile
+compose.yaml
+example.env
+tsconfig.json
