@@ -9,17 +9,6 @@ const mainRoutes = Router();
 // Teapot route
 mainRoutes.get('/tea', (req, res) => {res.status(418).send("Hey, do you like tea ? I really love it !")});
 
-// Users list route (might be removed later)
-const getUsersList: RequestHandler = async (req, res) => {
-    try{
-        conn.query('SELECT * FROM users;', (err, results) => {
-            if(err){throw err;};
-            res.status(200).json(results);
-        });
-    }
-    catch(error){res.status(400).json({error: "Failed to get data."});};
-};
-mainRoutes.get('/users_list', getUsersList);
 
 // Login route
 const login: RequestHandler = async (req, res) => {
