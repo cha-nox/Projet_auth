@@ -1,6 +1,5 @@
 import express from 'express';
 import helmet from 'helmet';
-//import cors from 'cors';
 import morgan from 'morgan';
 import mainRoutes from './routes/mainRoutes';
 import bodyParser from 'body-parser';
@@ -9,7 +8,6 @@ import bodyParser from 'body-parser';
 const port = 2012;
 const app = express()
     // Settings
-    //.use(cors({origin: 'http://localhost:5173'}))
     .use(express.json())
     .use(helmet())
     .use(helmet.contentSecurityPolicy())

@@ -9,7 +9,6 @@ const mainRoutes = Router();
 // Teapot route
 mainRoutes.get('/tea', (req, res) => {res.status(418).send("Hey, do you like tea ? I really love it !")});
 
-
 // Login route
 const login: RequestHandler = async (req, res) => {
     if(
