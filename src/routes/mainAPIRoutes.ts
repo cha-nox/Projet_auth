@@ -1,7 +1,7 @@
 
-import { ResultSetHeader } from "mysql2";
-import { checkPassword, hashPassword } from "../config/bcrypt";
-import { conn } from "../config/db";
+import { ResultSetHeader } from 'mysql2';
+import { checkPassword, hashPassword } from '../config/bcrypt';
+import { conn } from '../config/db';
 import { Router, RequestHandler } from 'express';
 
 const mainAPIRoutes = Router();
@@ -12,8 +12,8 @@ mainAPIRoutes.get('/tea', (req, res) => {res.status(418).send("Hey, do you like 
 // Login route
 const login: RequestHandler = async (req, res) => {
     if(
-        typeof req?.body?.username !== "string" ||
-        typeof req?.body?.password !== "string"
+        typeof req?.body?.username !== 'string' ||
+        typeof req?.body?.password !== 'string'
     ){
         res.status(403).json({error: "Username and password must be strings and not empty."});
         return;
@@ -45,8 +45,8 @@ mainAPIRoutes.post('/login', login);
 // Registration route
 const registration: RequestHandler = async (req, res, next) => {
     if(
-        typeof req?.body?.username !== "string" ||
-        typeof req?.body?.password !== "string"
+        typeof req?.body?.username !== 'string' ||
+        typeof req?.body?.password !== 'string'
     ){
         res.status(403).json({error: "Username and password must be strings and not empty."});
         return;
