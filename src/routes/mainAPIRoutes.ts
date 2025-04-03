@@ -3,7 +3,6 @@ import { ResultSetHeader } from "mysql2";
 import { checkPassword, hashPassword } from "../config/bcrypt";
 import { conn } from "../config/db";
 import { Router, RequestHandler } from 'express';
-import { serialize } from "v8";
 
 const mainAPIRoutes = Router();
 
