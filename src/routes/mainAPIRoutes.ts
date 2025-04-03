@@ -3,14 +3,12 @@ import { ResultSetHeader } from "mysql2";
 import { checkPassword, hashPassword } from "../config/bcrypt";
 import { conn } from "../config/db";
 import { Router, RequestHandler } from 'express';
+import { serialize } from "v8";
 
-const mainRoutes = Router();
+const mainAPIRoutes = Router();
 
-// Index route
-const index: RequestHandler = (req, res) => {
-    res.render('index', {username: ""});
-};
-mainRoutes.get('/', index);
+// Teapot route
+mainAPIRoutes.get('/tea', (req, res) => {res.status(418).send("Hey, do you like tea ? I really love it !")});
 
 // Login route
 const login: RequestHandler = async (req, res) => {
@@ -36,15 +34,14 @@ const login: RequestHandler = async (req, res) => {
         };
         const user = results[0] as any;
         if(await checkPassword(password, user.password)){
-            res.redirect('/');
+            res.status(200).json({message: "Login successful."});
         }
         else{
             res.status(401).json({error: "Invalid credentials."});
         };
     });
 };
-mainRoutes.get('/login', async (req, res) => {res.render('login');});
-mainRoutes.post('/login', login);
+mainAPIRoutes.post('/login', login);
 
 // Registration route
 const registration: RequestHandler = async (req, res, next) => {
@@ -67,13 +64,6 @@ const registration: RequestHandler = async (req, res, next) => {
     }
     catch(error){res.status(400).json({error: "Registration failed for some reason."});};
 };
-mainRoutes.get('/register', async (req, res) => {res.render('register');});
-mainRoutes.post('/register', registration, login);
+mainAPIRoutes.post('/register', registration, login);
 
-// Logout route
-const logout: RequestHandler = (req, res) => {
-    res.redirect('/');
-};
-mainRoutes.get('/logout', logout);
-
-export default mainRoutes;
+export default mainAPIRoutes;
