@@ -1,5 +1,10 @@
 <nav>
     <a href="/">Home</a>
-    <a href="/login">Login</a>
-    <a href="/register">Register</a>
+    <% if(is_authenticated){ %>
+        <a href="/logout">Logout</a>
+        <a href="/profile">Profile</a>
+    <% }else{ %>
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+    <% } %>
 </nav>

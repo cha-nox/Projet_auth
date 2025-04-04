@@ -11,10 +11,9 @@
         </header>
         <main>
             <% if(is_authenticated){ %> 
-                <h1>Welcome home, <%= username %> !</h1>
+                <h1>You are <%= username %> !</h1>
             <% }else{ %>
-                <h1>You are not logged in yet...</h1>
-                <a href="/auth/g">Login now using Google !</a><br>
+                <h1>How did you even got there ?...</h1>
             <% } %>
         </main>
         <footer>
